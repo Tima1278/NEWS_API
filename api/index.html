@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimissime notizie</title>
+    <!-- Link al CSS di Bootstrap -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(to right, #8A2BE2 0%, #FFD700 100%);
+      }
+  
+      h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-top: 20px;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+<body>
+  <div class="container mt-4">
+    <h1>Ultimissime notizie</h1>
+    <div class="row justify-content-center">
+      <button onclick="search()" class="btn btn-primary">Aggiorna le notizie</button>
+      <button onclick="window.location.href='Preferite.html'" class="btn btn-secondary mr-2">Preferiti</button>
+    </div>
+    <div id="results" class="row mt-3"></div> <!-- Elemento dove verranno visualizzati i risultati -->
+  </div>
+
+  <!-- Link ai file JavaScript di Bootstrap e jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Script JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

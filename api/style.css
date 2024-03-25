@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  #news-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .news-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .news-item h2 {
+    margin-top: 0;
+  }
+  
+  .news-item p {
+    margin-bottom: 10px;
+  }
+  
+  .news-item p em {
+    color: #666;
+  }
+  
+  .btn-search {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.btn-orange {
+  background-color: orange; /* Colore di sfondo arancione */
+  color: black; /* Colore del testo nero */
+}
+
+.btn-orange:hover {
+  background-color: darkorange; /* Cambio colore al passaggio del mouse */
+}
+.btn-preferito {
+  background-color: orange;
+  color: black; /* Cambia il colore del testo del pulsante in nero */
+}
+
+.btn-preferito:hover {
+  background-color: darkorange;
+}
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notizie Preferite</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #8A2BE2 0%, #FFD700 100%);
+            /* Stile del background */
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notizie Preferite</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <button onclick="redirectToLatestNews()" class="btn btn-primary">Torna alle ultimissime notizie</button>
+            </div>
+            <div class="col text-center">
+                <button onclick="clearFavorites()" class="btn btn-danger">Svuota Preferiti</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="favorites-container" class="container">
+        <!-- Questo è il contenitore dove verranno visualizzate le notizie preferite -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Funzione per ottenere i dati salvati delle notizie preferite dal localStorage
+        function getFavoritesData() {
+            return JSON.parse(localStorage.getItem('favorites')) || [];
+        }
+
+        // Funzione per visualizzare tutte le informazioni preferite presenti nel localStorage
+        function displayAllFavorites() {
+            const favoritesContainer = document.getElementById('favorites-container');
+            favoritesContainer.innerHTML = ''; // Pulisce il contenitore precedente
+
+            const favoritesData = getFavoritesData();
+            if (favoritesData.length === 0) {
+                favoritesContainer.innerHTML = '<p>Nessuna notizia preferita trovata.</p>';
+                return;
+            }
+
+            favoritesData.forEach(favorite => {
+                const favoriteCard = createFavoriteCard(favorite);
+                favoritesContainer.appendChild(favoriteCard);
+            });
+        }
+
+        // Funzione per creare una card per una notizia preferita
+        function createFavoriteCard(favorite) {
+            const card = document.createElement('div');
+            card.classList.add('card', 'mb-3');
+
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            const titleElement = document.createElement('h5');
+            titleElement.classList.add('card-title');
+            titleElement.textContent = favorite.title;
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.classList.add('card-text');
+            descriptionElement.textContent = favorite.description;
+
+            const sourceElement = document.createElement('p');
+            sourceElement.textContent = `Fonte: ${favorite.source.name}`;
+
+            const linkElement = document.createElement('a');
+            linkElement.classList.add('btn', 'btn-primary');
+            linkElement.href = favorite.url;
+            linkElement.target = '_blank';
+            linkElement.textContent = 'Leggi di più';
+
+            cardBody.appendChild(titleElement);
+            cardBody.appendChild(descriptionElement);
+            cardBody.appendChild(sourceElement);
+            cardBody.appendChild(linkElement);
+
+            card.appendChild(cardBody);
+
+            return card;
+        }
+
+        // Funzione per svuotare i preferiti
+        function clearFavorites() {
+            localStorage.removeItem('favorites');
+            displayAllFavorites();
+        }
+
+        // Funzione per reindirizzare alla pagina delle ultimissime notizie
+        function redirectToLatestNews() {
+            window.location.href = 'index.html';
+        }
+
+        // Visualizza tutte le informazioni preferite quando la pagina viene caricata
+        displayAllFavorites();
+    </script>
+</body>
+</html>
